@@ -7,17 +7,18 @@
                         <i class="icon-menu"></i>
                     </button>
                     <a href="/" class="logo">
-                        <img th:src="@{shop/images/LOGO.png}"  alt="logo">
+                        <img th:src="@{shop/images/LOGO.png}" alt="logo">
                     </a>
                 </div><!-- End .header-left -->
 
                 <div class="header-right w-lg-max">
                     <div class="header-icon header-icon header-search header-search-inline header-search-category w-lg-max text-right">
                         <a href="#" class="search-toggle search-button" role="button"><i class="icon-search-3"></i></a>
-                            <div class="header-search-wrapper">
-                                <input class="form-control search-input"  placeholder="Nhập sản phẩm cần tìm kiếm..." required>
-                                <button class="btn icon-search-3 p-0 search-button" type="submit"></button>
-                            </div><!-- End .header-search-wrapper -->
+                        <div class="header-search-wrapper">
+                            <input class="form-control search-input" placeholder="Nhập sản phẩm cần tìm kiếm..."
+                                   required>
+                            <button class="btn icon-search-3 p-0 search-button" type="submit"></button>
+                        </div><!-- End .header-search-wrapper -->
                     </div><!-- End .header-search -->
 
                     <div class="header-contact d-none d-lg-flex pl-4 ml-3 mr-xl-5 pr-4">
@@ -25,29 +26,145 @@
                         <h6>Hotline<a href="tel:#" class="text-dark font1">094 369 6816</a></h6>
                     </div>
 
-                    <a href="" data-toggle="modal" data-target="#exampleModal" class="header-icon account-setting"><i class="icon-user-2"></i></a>
+                    <a href="" data-toggle="modal" data-target="#exampleModal" class="header-icon account-setting"><i
+                            class="icon-user-2"></i></a>
 
                 </div><!-- End .header-right -->
             </div><!-- End .container -->
         </div><!-- End .header-middle -->
 
-        <div class="header-bottom sticky-header d-none d-lg-block">
-            <div class="container">
-                <nav class="main-nav w-100">
-                    <ul class="menu">
-                        <li class="active">
-                            <a href="/">Trang chủ</a>
-                        </li>
-<!--                        <th:block th:each="brand : ${brands}">-->
-<!--                            <li><a href="/" th:text="${brand.name}">Trang chủ</a></li>-->
-<!--                        </th:block>-->
-                        <li class="float-right mr-0"><a href="/lien-he" class="px-4">Liên hệ</a></li>
-                        <li class="float-right"><a href="/doi-hang">Chính sách</span></a></li>
-                        <li class="float-right"><a href="/tin-tuc">Tin tức</a></li>
-                        <li class="float-right"><a href="/san-pham">Sản phẩm</a></li>
-                    </ul>
-                </nav>
-            </div><!-- End .container -->
-        </div><!-- End .header-bottom -->
+
+        <div class="container">
+            <style>
+                li {
+                    list-style-type: none;
+                }
+
+                nav {
+                    width: 100%;
+                    height: 60px;
+                    display: flex;
+                    text-align: center;
+                    position: relative;
+                    background: #fff;
+                }
+
+                nav label {
+                    width: 100%;
+                    height: 100%;
+                    line-height: 60px;
+                    font-size: 18px;
+                    font-weight: 400;
+                    margin: 0 5px;
+                    color: rgb(10, 10, 10);
+                    position: relative;
+                    z-index: 1;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+
+                nav label:hover {
+                    background: rgb(212, 238, 140);
+                }
+
+                nav label i {
+                    margin-right: 4px;
+                }
+
+                nav .slider {
+                    position: absolute;
+                    height: 100%;
+                    width: 20%;
+                    background: rgb(54, 166, 134);
+                    left: 0;
+                    top: 0;
+                    /* border-radius: 5px; */
+                    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                    z-index: 1;
+                }
+
+                #home:checked ~ nav label.home,
+                #blog:checked ~ nav label.blog,
+                #code:checked ~ nav label.code,
+                #help:checked ~ nav label.help,
+                #about:checked ~ nav label.about {
+                    color: #fff;
+                }
+
+                #blog:checked ~ nav .slider {
+                    left: 20%;
+                }
+
+                #code:checked ~ nav .slider {
+                    left: 40%;
+                }
+
+                #help:checked ~ nav .slider {
+                    left: 60%;
+                }
+
+                #about:checked ~ nav .slider {
+                    left: 80%;
+                }
+
+                input[type=radio] {
+                    display: none;
+                }
+            </style>
+
+            <input type="radio" name="s" id="home" checked>
+            <input type="radio" name="s" id="blog">
+            <input type="radio" name="s" id="code">
+            <input type="radio" name="s" id="help">
+            <input type="radio" name="s" id="about">
+            <nav>
+                <div class="slider"></div>
+                <label class="home" for="home">
+                    <li class="active">
+                        <a href="/">Trang chủ</a>
+                    </li>
+                </label>
+                <label class="blog" for="blog">
+                    <li class="active">
+                        <a href="/san-pham">Sản phẩm</a>
+                    </li>
+                </label>
+                <label class="code" for="code">
+                    <li class="active">
+                        <a href="/tin-tuc">Tin tức</a>
+                    </li>
+                </label>
+                <label class="help" for="help">
+                    <li class="active">
+                        <a href="/doi-hang">Chính sách</a>
+                    </li>
+                </label>
+                <label class="about" for="about">
+                    <li class="active">
+                        <a href="/lien-he">Liên hệ</a>
+                    </li>
+                </label>
+            </nav>
+        </div>
+
+        <!--  ----------------------------------------------------------->
+        <!--        <div class="header-bottom sticky-header d-none d-lg-block">-->
+        <!--            <div class="container">-->
+        <!--                <nav class="main-nav w-100">-->
+        <!--                    <ul class="menu">-->
+        <!--                        <li class="active">-->
+        <!--                            <a href="/">Trang chủ</a>-->
+        <!--                        </li>-->
+        <!--&lt;!&ndash;                        <th:block th:each="brand : ${brands}">&ndash;&gt;-->
+        <!--&lt;!&ndash;                            <li><a href="/" th:text="${brand.name}">Trang chủ</a></li>&ndash;&gt;-->
+        <!--&lt;!&ndash;                        </th:block>&ndash;&gt;-->
+        <!--                        <li class="float-right mr-0"><a href="/lien-he" class="px-4">Liên hệ</a></li>-->
+        <!--                        <li class="float-right"><a href="/doi-hang">Chính sách</span></a></li>-->
+        <!--                        <li class="float-right"><a href="/tin-tuc">Tin tức</a></li>-->
+        <!--                        <li class="float-right"><a href="/san-pham">Sản phẩm</a></li>-->
+        <!--                    </ul>-->
+        <!--                </nav>-->
+        <!--            </div>&lt;!&ndash; End .container &ndash;&gt;-->
+        <!--        </div>&lt;!&ndash; End .header-bottom &ndash;&gt;-->
     </header><!-- End .header -->
 </th:block>
